@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Проверка файлов</title>
+        <script type='text/javascript' src='/eel.js'></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script type='text/javascript'>
+        
+        async function pick_file() {
+            let folder = document.getElementById('input-box').value;
+            let file_div = document.getElementById('file-name');
+            let file_hash = document.getElementById('file-hash');
+            
+            // Call into Python so we can access the file system
+            let answer = await eel.pick_file(folder)();
+            random_filename = answer[0];
+            md5_file = answer[1]
+            file_div.innerHTML = random_filename;
+            file_hash.innerHTML = 'md5: ' + md5_file;
+            file_div.classList.remove("invisible");
+        }
+        
+        </script>
+    </head>
+    
+    <body>
+    <h1 class="display-4 text-center">Выбор случайного файла в папке</h1>
+	<h2 class=" text-center">Или категории</h2>
+    <div class="container-fluid">
+		<div class="row">
+		<hr>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+			<div class="input-group col-sm-8">
+				<input id='input-box' class="form-control" placeholder='Type folder here' value='C:\Windows'></input>
+				<div class="input-group-append">
+				<button onclick='pick_file()' type="button" class="btn btn-success">Показать</button>
+				</div>
+			</div>
+		 	<div class="col-sm-2">
+			</div>
+		</div>
+		<div class="row">
+			<hr>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-8">
+				<p id='file-name' class="alert alert-warning text-center invisible" role="warning ">
+				</p>
+		 	</div>
+		 	<div class="col-sm-2">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-8">
+				<p id='file-hash' class="text-center"></p>
+		 	</div>
+		 	<div class="col-sm-2">
+			</div>
+		</div>
+	</div>	
+        
+       
+    <script>
+    	document.oncontextmenu = function (e) {
+    		return false;
+    	}
+    </script>
+    </body>
+</html>
