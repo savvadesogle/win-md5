@@ -1,4 +1,7 @@
 # win-md-5
+
+![Demo screenshop (ru)](https://github.com/savvadesogle/win-md5/blob/master/demo.jpg)
+
 ## Responsive GUI desktop App
 * Python
 * Eel
