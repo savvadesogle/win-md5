@@ -1,0 +1,4 @@
+__pycache__/
+.git/
+build/
+file_access_.spec
